@@ -15,3 +15,7 @@ https://react-hot-toast.com/
 ## clsx
 
 https://www.npmjs.com/package/clsx
+
+## react spinners
+
+https://www.npmjs.com/package/react-spinners
