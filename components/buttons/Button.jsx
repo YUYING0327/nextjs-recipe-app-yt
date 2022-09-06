@@ -15,11 +15,14 @@ function ButtonWithLink({ link = '/', children, variant = 'secondary' }) {
   );
 }
 
-function Button({ children, variant = 'secondary' }) {
+function Button({
+  children, variant = 'secondary', onClick, className,
+}) {
   return (
     <button
       type="button"
-      className={clsx(classes.button, classes[`variant__${variant}`])}
+      className={clsx(classes.button, className, classes[`variant__${variant}`])}
+      onClick={onClick}
     >
       {children}
     </button>

@@ -35,3 +35,37 @@
 .info {
 	padding-top: 2rem;
 }
+
+.infoText {
+	padding-top: 1rem;
+}
+
+.saveButton {
+	margin-top: 2rem;
+	svg {
+		margin-bottom: -2.5px;
+	}
+}
+
+.ingredientsTable,
+.instructions {
+	margin-top: 10rem;
+}
+
+.greenText {
+	margin-top: 2rem;
+	color: #00b300;
+}
+
+@media only screen and (max-width: 768px) {
+	.topContainer {
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: center;
+		gap: 2rem;
+	}
+	.ingredientsTable,
+	.instructions {
+		margin-top: 5rem;
+	}
+}

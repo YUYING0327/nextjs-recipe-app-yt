@@ -22,10 +22,8 @@ function MyApp({ Component, pageProps }) {
       <Toaster
         position="bottom-right"
         toastOptions={{
-          toastOptions: {
-            style: {
-              fontSize: '1.4rem',
-            },
+          style: {
+            fontSize: '1.4rem',
           },
         }}
       />
