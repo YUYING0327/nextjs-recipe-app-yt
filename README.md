@@ -11,3 +11,7 @@ https://tanstack.com/query/v4
 ## react-hot-toast
 
 https://react-hot-toast.com/
+
+## clsx
+
+https://www.npmjs.com/package/clsx
