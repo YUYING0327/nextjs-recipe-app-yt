@@ -13,7 +13,7 @@ import PointText from '../../components/text/PointText';
 import IngredientsTable from '../../components/mealsPage/IngredientsTable';
 import { Button } from '../../components/buttons/Button';
 
-const getSingleMeal = async ({ queryKey }) => {
+export const getSingleMeal = async ({ queryKey }) => {
   const { data } = await axios.get(`/lookup.php?i=${queryKey[1]}`);
   return data?.meals?.[0];
 };
@@ -27,8 +27,8 @@ function SingleMealPage() {
   } = useQuery(['signleMeal', id], getSingleMeal);
 
   useEffect(() => {
-    if (localStorage.getItem('saveMeals')) {
-      const savedMeals = JSON.parse(localStorage.getItem('saveMeals'));
+    if (localStorage.getItem('savedMeals')) {
+      const savedMeals = JSON.parse(localStorage.getItem('savedMeals'));
       if (savedMeals.includes(id)) {
         setIsSaved(true);
       } else {
@@ -66,22 +66,17 @@ function SingleMealPage() {
   ));
 
   const handleSaveButtonClick = () => {
-    if (localStorage.getItem('savedMeals') === null) {
-      localStorage.setItem('savedMeals', JSON.stringify([data.idMeal]));
+    const savedMeals = JSON.parse(localStorage.getItem('savedMeals'));
+    if (!isSaved) {
+      savedMeals.push(data.idMeal);
+      localStorage.setItem('savedMeals', JSON.stringify(savedMeals));
       toast.success('Meal Saved Successfully');
+      setIsSaved(true);
     } else {
-      const savedMeals = JSON.parse(localStorage.getItem('savedMeals'));
-      if (!isSaved) {
-        savedMeals.push(data.idMeal);
-        localStorage.setItem('savedMeals', JSON.stringify(savedMeals));
-        toast.success('Meal Saved Successfully');
-        setIsSaved(true);
-      } else {
-        savedMeals.splice(savedMeals.indexOf(data.idMeal), 1);
-        localStorage.setItem('savedMeals', JSON.stringify(savedMeals));
-        setIsSaved(false);
-        toast.error('Meal Removed Successfully');
-      }
+      savedMeals.splice(savedMeals.indexOf(data.idMeal), 1);
+      localStorage.setItem('savedMeals', JSON.stringify(savedMeals));
+      setIsSaved(false);
+      toast.error('Meal Removed Successfully');
     }
   };
 
