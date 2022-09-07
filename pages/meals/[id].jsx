@@ -24,7 +24,7 @@ function SingleMealPage() {
   const { id } = router.query;
   const {
     data, isLoading, isError, error,
-  } = useQuery(['signleMeal', id], getSingleMeal);
+  } = useQuery(['singleMeal', id], getSingleMeal);
 
   useEffect(() => {
     if (localStorage.getItem('savedMeals')) {
@@ -34,8 +34,6 @@ function SingleMealPage() {
       } else {
         setIsSaved(false);
       }
-    } else {
-      localStorage.setItem('savedMeals', JSON.stringify([]));
     }
   }, [id]);
 
